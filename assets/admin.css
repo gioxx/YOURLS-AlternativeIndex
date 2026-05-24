@@ -1,0 +1,162 @@
+/* ── Header ── */
+.yai-header         { display:flex; flex-direction:column; align-items:flex-start; }
+.yai-title          { margin:0; padding:0; font-family:Arial,sans-serif; font-size:2em; font-weight:bold; }
+.yai-title-text     { background:-webkit-linear-gradient(#0073aa,#00a8e6); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.yai-version        { font-size:.85em; color:#666; margin-top:4px; }
+
+/* ── Panel ── */
+.yai-panel          { background:#fff; border:1px solid #d9e6ef; border-radius:10px; margin-bottom:18px; box-shadow:0 1px 0 rgba(2,27,45,.04); padding:16px; }
+.yai-heading        { margin:0 0 12px; font-size:1.06rem; font-weight:700; color:#0a4b78; }
+
+/* ── Global hint text — one rule covers all contexts ── */
+.yai-panel small    { display:block; color:#667885; margin-bottom:7px; font-size:.73rem; line-height:1.4; }
+
+/* ── Standard field rows ── */
+.yai-row            { margin-bottom:12px; }
+.yai-row:last-child { margin-bottom:0; }
+.yai-row-mt         { margin-top:14px; }
+.yai-row > label    { display:block; font-weight:700; margin-bottom:2px; color:#26323a; font-size:.84rem; }
+.yai-row input[type="text"],
+.yai-row textarea   { width:100%; border:1px solid #c7d8e4; border-radius:8px; padding:6px 9px; background:#fff; color:#26323a; box-sizing:border-box; font-size:.85rem; }
+.yai-row input[type="text"] { height:32px; }
+
+/* ── Color picker items ── */
+.yai-color-items    { display:flex; gap:24px; flex-wrap:wrap; align-items:flex-start; }
+.yai-color-item     { display:flex; flex-direction:column; gap:4px; }
+.yai-color-item > label { display:block; font-weight:700; font-size:.84rem; color:#26323a; }
+.yai-color-input-row { display:flex; align-items:center; gap:6px; }
+.yai-color-input-row input[type="color"] { width:44px; height:32px; border:1px solid #c7d8e4; border-radius:8px; padding:2px; cursor:pointer; background:#fff; flex-shrink:0; }
+.yai-hex-input      { width:88px; height:32px; border:1px solid #c7d8e4; border-radius:8px; padding:0 8px; font-size:.82rem; font-family:monospace; color:#26323a; background:#fff; box-sizing:border-box; }
+
+/* ── Avatar mode selector ── */
+.yai-avatar-modes   { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:10px; }
+.yai-avatar-mode-label { font-size:.84rem; font-weight:normal; cursor:pointer; display:flex; align-items:center; gap:4px; }
+.yai-avatar-panel   { margin-bottom:4px; }
+.yai-avatar-panel input[type="text"],
+.yai-avatar-panel input[type="email"] { width:100%; height:32px; border:1px solid #c7d8e4; border-radius:8px; padding:0 9px; background:#fff; color:#26323a; box-sizing:border-box; font-size:.85rem; }
+.yai-avatar-current { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+.yai-avatar-thumb   { width:48px; height:48px; border-radius:50%; object-fit:cover; border:2px solid #c7d8e4; }
+.yai-avatar-filename { font-size:.78rem; color:#667885; word-break:break-all; }
+
+/* ── Background image section ── */
+.yai-bgimg-panel    { margin-bottom:4px; }
+.yai-bgimg-panel input[type="text"] { width:100%; height:32px; border:1px solid #c7d8e4; border-radius:8px; padding:0 9px; background:#fff; color:#26323a; box-sizing:border-box; font-size:.85rem; }
+.yai-bgimg-current  { margin-bottom:10px; border-radius:10px; overflow:hidden; position:relative; max-width:300px; }
+.yai-bgimg-thumb    { width:100%; height:80px; object-fit:cover; display:block; border-radius:8px; border:1px solid #c7d8e4; }
+
+/* ── Toggle rows ── */
+.yai-check-row      { margin-bottom:12px; }
+.yai-check-row:last-child { margin-bottom:0; }
+.yai-toggle-label   { display:flex; align-items:center; gap:10px; cursor:pointer; font-size:.84rem; font-weight:600; color:#26323a; user-select:none; }
+.yai-toggle-cb      { display:none; }
+.yai-toggle         { position:relative; flex-shrink:0; width:40px; height:22px; background:#ccc; border-radius:11px; transition:background .2s; }
+.yai-toggle::after  { content:""; position:absolute; top:3px; left:3px; width:16px; height:16px; background:#fff; border-radius:50%; transition:left .2s; box-shadow:0 1px 3px rgba(0,0,0,.2); }
+.yai-toggle-cb:checked + .yai-toggle { background:#c4590b; }
+.yai-toggle-cb:checked + .yai-toggle::after { left:21px; }
+
+/* ── Column headers for dynamic lists ── */
+.yai-col-headers    { display:flex; gap:8px; padding:0 10px; margin-bottom:4px; }
+.yai-col-headers span { font-size:.7rem; font-weight:700; color:#8fa3b0; text-transform:uppercase; letter-spacing:.05em; overflow:hidden; }
+.yai-ch-platform    { flex:0 0 130px; }
+.yai-ch-url         { flex:1 1 0; }
+.yai-ch-emoji       { flex:0 0 55px; text-align:center; }
+.yai-ch-title       { flex:1 1 0; }
+.yai-ch-featured-url{ flex:2 1 0; }
+.yai-ch-spacer      { flex:0 0 30px; }
+
+/* ── Dynamic rows ── */
+.yai-dynamic-row    { display:flex; gap:8px; align-items:center; margin-bottom:8px; background:#f7fafc; border:1px solid #d9e6ef; border-radius:8px; padding:8px 10px; flex-wrap:wrap; }
+.yai-dynamic-row select,
+.yai-dynamic-row input[type="text"] { height:30px; border:1px solid #c7d8e4; border-radius:6px; padding:0 8px; font-size:.82rem; background:#fff; color:#26323a; box-sizing:border-box; min-width:0; }
+.yai-dynamic-row select     { flex:0 0 130px; }
+.yai-social-url             { flex:1 1 180px; }
+.yai-emoji-input            { flex:0 0 55px; text-align:center; }
+.yai-featured-title         { flex:1 1 120px; }
+.yai-featured-url           { flex:2 1 180px; }
+
+/* ── Remove button ── */
+.yai-rm-btn         { flex-shrink:0; background:none; border:1px solid transparent; color:#c0392b; cursor:pointer; font-size:1.2rem; line-height:1; padding:2px 6px; border-radius:6px; }
+.yai-rm-btn:hover   { background:#fde8e8; border-color:#f5c6cb; }
+
+/* ── Add button ── */
+.yai-add-btn {
+    margin-top:8px !important; display:inline-block !important;
+    padding:8px 18px; border-radius:10px !important;
+    background:#fff !important; border:1px solid #8ec5f7 !important;
+    color:#1f2328 !important; font-weight:400 !important;
+    box-shadow:none !important; text-shadow:none !important;
+    cursor:pointer;
+    transition:background-color .15s ease, border-color .15s ease, color .15s ease;
+}
+.yai-add-btn:hover  { background:#f4f9ff !important; border-color:#72aee6 !important; color:#0a4b78 !important; }
+
+/* ── File input browse button ── */
+input[type="file"]  { font-size:.84rem; color:#667885; }
+input[type="file"]::file-selector-button,
+input[type="file"]::-webkit-file-upload-button {
+    height:30px; padding:0 12px; border-radius:8px;
+    background:#fff; border:1px solid #8ec5f7; color:#1f2328;
+    font-size:.82rem; font-weight:400; cursor:pointer;
+    margin-right:8px;
+    transition:background-color .15s ease, border-color .15s ease;
+}
+input[type="file"]::file-selector-button:hover,
+input[type="file"]::-webkit-file-upload-button:hover {
+    background:#f4f9ff; border-color:#72aee6; color:#0a4b78;
+}
+
+/* ── Action buttons ── */
+.yai-actions        { margin-top:16px; display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.yai-actions .button {
+    margin:0;
+    padding:8px 18px;
+    border-radius:10px !important;
+    background:#fff !important;
+    border:1px solid #8ec5f7 !important;
+    color:#1f2328 !important;
+    font-weight:400 !important;
+    box-shadow:none !important;
+    text-shadow:none !important;
+    text-decoration:none !important;
+    cursor:pointer;
+    transition:background-color .15s ease, border-color .15s ease, color .15s ease;
+}
+.yai-actions .button:hover:not(:disabled),
+.yai-actions .button:focus:not(:disabled),
+.yai-actions .button:active:not(:disabled) {
+    background:#f4f9ff !important;
+    border-color:#72aee6 !important;
+    color:#0a4b78 !important;
+    text-shadow:none !important;
+}
+.yai-actions .button[disabled],
+.yai-actions .button:disabled {
+    opacity:0.55;
+    background:#fff !important;
+    border-color:#d4e7f8 !important;
+    color:#aab7c4 !important;
+    box-shadow:none !important;
+    cursor:not-allowed;
+}
+
+/* ── Footer ── */
+.yai-footer         { margin-top:40px; padding-top:20px; border-top:1px solid #ddd; font-size:.9em; color:#666; text-align:center; opacity:.85; }
+.yai-footer a       { color:#0073aa; text-decoration:none; }
+.yai-footer a:hover { text-decoration:underline; }
+.yai-footer .github-icon { vertical-align:middle; width:16px; height:16px; margin-right:4px; display:inline-block; }
+
+/* ── Update badge ── */
+.yai-update-badge   { display:inline-block; margin-left:6px; padding:2px 8px; border-radius:999px; background:#e6f4ff; border:1px solid #8ec5f7; color:#0a4b78; font-size:12px; font-weight:600; vertical-align:middle; }
+
+/* ── index.php / .htaccess status banners ── */
+.yai-htaccess-warn-mt { margin-top:8px; }
+.yai-htaccess-ok   { margin-top:12px; padding:10px 14px; background:#eafaf0; border:1px solid #a8ddb8; border-radius:8px; font-size:.84rem; color:#1e6b3a; display:flex; align-items:center; flex-wrap:wrap; gap:6px; }
+.yai-htaccess-warn { margin-top:12px; padding:12px 14px; background:#fff8e9; border:1px solid #f0c060; border-radius:8px; font-size:.84rem; color:#7a4e00; }
+.yai-htaccess-warn code,
+.yai-htaccess-warn pre { font-size:.8rem; }
+.yai-code { background:#f4f4f4; border:1px solid #ddd; border-radius:6px; padding:8px 12px; margin:8px 0 0; font-family:monospace; white-space:pre; overflow-x:auto; color:#333; }
+.yai-btn-sm { padding:2px 10px !important; font-size:.78rem !important; }
+
+/* ── Notices ── */
+.notice-success { background:#eafaf0; border-left:4px solid #3da56a; padding:10px 12px; border-radius:6px; margin-bottom:12px; }
+.notice-warning { background:#fff8e9; border-left:4px solid #d79a2b; padding:10px 12px; border-radius:6px; margin-bottom:12px; }

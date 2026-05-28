@@ -148,6 +148,9 @@ input[type="file"]::-webkit-file-upload-button:hover {
 /* ── Update badge ── */
 .yai-update-badge   { display:inline-block; margin-left:6px; padding:2px 8px; border-radius:999px; background:#e6f4ff; border:1px solid #8ec5f7; color:#0a4b78; font-size:12px; font-weight:600; vertical-align:middle; }
 
+/* ── Update notice banner ── */
+.yai-update-notice  { display:block; width:100%; box-sizing:border-box; padding:14px 18px !important; margin:0 0 20px !important; border-left:4px solid #8ec5f7 !important; border-bottom:2px solid #8ec5f7 !important; border-radius:0 !important; }
+
 /* ── index.php / .htaccess status banners ── */
 .yai-htaccess-warn-mt { margin-top:8px; }
 .yai-htaccess-ok   { margin-top:12px; padding:10px 14px; background:#eafaf0; border:1px solid #a8ddb8; border-radius:8px; font-size:.84rem; color:#1e6b3a; display:flex; align-items:center; flex-wrap:wrap; gap:6px; }

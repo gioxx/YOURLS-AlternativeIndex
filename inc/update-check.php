@@ -14,7 +14,7 @@ function yai_show_update_notice() {
     if ( !$release ) return;
     $latest = ltrim( $release['tag_name'], 'v' );
     if ( version_compare( $latest, YAI_VERSION, '>' ) ) {
-        echo '<div class="notice notice-info">&#x1F195; <strong>YOURLS Alternative Index</strong>: New version available: <strong>' . $latest . '</strong>! <a href="' . $release['html_url'] . '" target="_blank">View on GitHub</a></div>';
+        echo '<div class="notice notice-info yai-update-notice">&#x1F195; <strong>YOURLS Alternative Index</strong>: New version available: <strong>' . $latest . '</strong>! <a href="' . $release['html_url'] . '" target="_blank">View details on GitHub</a></div>';
     }
 }
 

@@ -94,7 +94,7 @@ function yai_config_page() {
     yai_show_update_notice();
 
     echo '<div class="yai-header">';
-    echo '<h2 class="yai-title">&#127968; <span class="yai-title-text">YOURLS Alternative Index</span></h2>';
+    echo '<h2 class="yai-title">&#127968; <span class="yai-title-text">' . yourls_apply_filters( 'plugin_page_title_alternative_index', 'YOURLS Alternative Index' ) . '</span></h2>';
     echo '<p class="yai-version">Version: ' . YAI_VERSION . '</p>';
     echo '</div>';
 

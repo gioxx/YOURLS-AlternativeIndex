@@ -9,11 +9,6 @@ function yai_fetch_latest_release() {
     return $release ?: null;
 }
 
-yourls_add_action( 'admin_head', 'yai_print_notice_css' );
-function yai_print_notice_css() {
-    echo '<style>.yai-update-notice{display:block;width:100%;box-sizing:border-box;padding:14px 18px!important;margin:0 0 20px!important;border-left:4px solid #8ec5f7!important;border-bottom:2px solid #8ec5f7!important;border-radius:0!important;}</style>';
-}
-
 function yai_show_update_notice() {
     $release = yai_fetch_latest_release();
     if ( !$release ) return;

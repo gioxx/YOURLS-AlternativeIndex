@@ -3,7 +3,7 @@
 Plugin Name: YOURLS Alternative Index
 Plugin URI: https://github.com/gioxx/YOURLS-AlternativeIndex
 Description: Transform the unused YOURLS root page into a Linktree-style profile page with social links, featured content, and custom branding.
-Version: 1.0.0
+Version: 1.0.2
 Author: Gioxx
 Author URI: https://gioxx.org
 Text Domain: yourls-alternative-index
@@ -12,7 +12,7 @@ Domain Path: /languages
 
 if ( !defined( 'YOURLS_ABSPATH' ) ) die();
 
-define( 'YAI_VERSION',             '1.0.0' );
+define( 'YAI_VERSION',             '1.0.2' );
 define( 'YAI_GITHUB_OWNER',        'gioxx' );
 define( 'YAI_GITHUB_REPO',         'YOURLS-AlternativeIndex' );
 define( 'YAI_GITHUB_REPO_URL',     'https://github.com/' . YAI_GITHUB_OWNER . '/' . YAI_GITHUB_REPO );
@@ -36,5 +36,4 @@ require_once $yai_inc . 'update-check.php';
 require_once $yai_inc . 'public-page.php';
 require_once $yai_inc . 'admin-page.php';
 
-yourls_add_action( 'admin_notices',                       'yai_show_update_notice' );
 yourls_add_filter( 'plugin_page_title_alternative_index', 'yai_page_title_with_badge' );

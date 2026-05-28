@@ -91,6 +91,7 @@ function yai_config_page() {
     $nonce_reset  = yourls_create_nonce( 'yai_reset' );
 
     yai_enqueue_admin_assets( $social_links, $featured_links );
+    yai_show_update_notice();
 
     echo '<div class="yai-header">';
     echo '<h2 class="yai-title">&#127968; <span class="yai-title-text">YOURLS Alternative Index</span></h2>';

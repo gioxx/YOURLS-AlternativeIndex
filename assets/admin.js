@@ -78,6 +78,47 @@
         return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }
 
+    function checkImageSizeWarning(img, warningEl) {
+        if (img.naturalWidth > 600 || img.naturalHeight > 600) {
+            warningEl.textContent = '⚠️ Large image detected (' + img.naturalWidth + '×' + img.naturalHeight + ' px): the preview has been scaled down. Consider reducing the displayed dimensions before saving.';
+            warningEl.classList.remove('yai-panel--hidden');
+        } else {
+            warningEl.classList.add('yai-panel--hidden');
+        }
+    }
+
+    function setupUrlPreview(inputId, previewId, warningId) {
+        var input   = document.getElementById(inputId);
+        var preview = document.getElementById(previewId);
+        var warning = document.getElementById(warningId);
+        if (!input || !preview || !warning) return;
+
+        preview.addEventListener('load', function () {
+            preview.classList.remove('yai-panel--hidden');
+            checkImageSizeWarning(preview, warning);
+        });
+        preview.addEventListener('error', function () {
+            preview.classList.add('yai-panel--hidden');
+            warning.classList.add('yai-panel--hidden');
+        });
+        input.addEventListener('input', function () {
+            var url = input.value.trim();
+            if (!url) {
+                preview.classList.add('yai-panel--hidden');
+                warning.classList.add('yai-panel--hidden');
+                preview.removeAttribute('src');
+                return;
+            }
+            preview.src = url;
+        });
+
+        if (preview.getAttribute('src') && !preview.classList.contains('yai-panel--hidden')) {
+            if (preview.complete && preview.naturalWidth > 0) {
+                checkImageSizeWarning(preview, warning);
+            }
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
         var socialList   = document.getElementById('yai-social-list');
         var featuredList = document.getElementById('yai-links-list');
@@ -106,20 +147,23 @@
         // Avatar mode toggle
         document.querySelectorAll('input[name="yai_avatar_mode"]').forEach(function (radio) {
             radio.addEventListener('change', function () {
-                document.querySelectorAll('.yai-avatar-panel').forEach(function (p) { p.style.display = 'none'; });
+                document.querySelectorAll('.yai-avatar-panel').forEach(function (p) { p.classList.add('yai-panel--hidden'); });
                 var panel = document.getElementById('yai-avatar-' + radio.value + '-panel');
-                if (panel) panel.style.display = '';
+                if (panel) panel.classList.remove('yai-panel--hidden');
             });
         });
 
         // Background image mode toggle
         document.querySelectorAll('input[name="yai_bg_image_mode"]').forEach(function (radio) {
             radio.addEventListener('change', function () {
-                document.querySelectorAll('.yai-bgimg-panel').forEach(function (p) { p.style.display = 'none'; });
+                document.querySelectorAll('.yai-bgimg-panel').forEach(function (p) { p.classList.add('yai-panel--hidden'); });
                 var panel = document.getElementById('yai-bgimg-' + radio.value + '-panel');
-                if (panel) panel.style.display = '';
+                if (panel) panel.classList.remove('yai-panel--hidden');
             });
         });
+
+        setupUrlPreview('yai_avatar_url',  'yai-avatar-url-preview',  'yai-avatar-url-size-warning');
+        setupUrlPreview('yai_bg_image_url', 'yai-bgimg-url-preview',   'yai-bgimg-url-size-warning');
 
         // Color picker <-> hex input sync
         document.querySelectorAll('.yai-color-input-row').forEach(function (row) {

@@ -163,3 +163,15 @@ input[type="file"]::-webkit-file-upload-button:hover {
 /* ── Notices ── */
 .notice-success { background:#eafaf0; border-left:4px solid #3da56a; padding:10px 12px; border-radius:6px; margin-bottom:12px; }
 .notice-warning { background:#fff8e9; border-left:4px solid #d79a2b; padding:10px 12px; border-radius:6px; margin-bottom:12px; }
+
+/* ── Utility ── */
+.yai-panel--hidden { display:none; }
+
+/* ── Custom CSS textarea ── */
+.yai-custom-css-field { width:100%; font-family:monospace; font-size:.8rem; }
+
+/* ── Image URL preview ── */
+.yai-img-preview  { display:block; margin-top:8px; max-height:220px !important; max-width:100% !important; object-fit:contain; border-radius:6px; border:1px solid #c7d8e4; }
+
+/* ── Image size warning ── */
+.yai-size-warning { margin-top:6px; padding:6px 10px; background:#fff9e8; border-left:3px solid #f0b429; font-size:.72rem; color:#5f4a10; border-radius:0 4px 4px 0; }

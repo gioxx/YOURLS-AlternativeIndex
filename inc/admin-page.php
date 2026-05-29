@@ -94,7 +94,9 @@ function yai_config_page() {
     yai_show_update_notice();
 
     echo '<div class="yai-header">';
-    echo '<h2 class="yai-title">&#127968; <span class="yai-title-text">' . yourls_apply_filters( 'plugin_page_title_alternative_index', 'YOURLS Alternative Index' ) . '</span></h2>';
+    $page_heading = htmlspecialchars( yourls_apply_filters( 'plugin_page_title_alternative_index', 'YOURLS Alternative Index' ), ENT_QUOTES, 'UTF-8' );
+    $update_badge = yai_has_update() ? ' <span class="yai-update-badge">Update Available</span>' : '';
+    echo '<h2 class="yai-title">&#127968; <span class="yai-title-text">' . $page_heading . $update_badge . '</span></h2>';
     echo '<p class="yai-version">Version: ' . YAI_VERSION . '</p>';
     echo '</div>';
 
@@ -172,17 +174,19 @@ function yai_config_page() {
     }
     echo '</div>';
 
-    echo '<div class="yai-avatar-panel" id="yai-avatar-url-panel"' . ( $avatar_mode !== 'url' ? ' style="display:none"' : '' ) . '>';
+    echo '<div class="yai-avatar-panel' . ( $avatar_mode !== 'url' ? ' yai-panel--hidden' : '' ) . '" id="yai-avatar-url-panel">';
     echo '<small>Direct link to your profile picture (square images work best).</small>';
     echo '<input type="text" name="yai_avatar_url" id="yai_avatar_url" value="' . yourls_esc_attr( $avatar_url ) . '" placeholder="https://example.com/photo.jpg">';
+    echo '<img id="yai-avatar-url-preview" class="yai-img-preview' . ( ($avatar_mode === 'url' && $avatar_url) ? '' : ' yai-panel--hidden' ) . '" src="' . ( ($avatar_mode === 'url' && $avatar_url) ? yourls_esc_attr( $avatar_url ) : '' ) . '" alt="Avatar preview">';
+    echo '<div id="yai-avatar-url-size-warning" class="yai-size-warning yai-panel--hidden"></div>';
     echo '</div>';
 
-    echo '<div class="yai-avatar-panel" id="yai-avatar-gravatar-panel"' . ( $avatar_mode !== 'gravatar' ? ' style="display:none"' : '' ) . '>';
+    echo '<div class="yai-avatar-panel' . ( $avatar_mode !== 'gravatar' ? ' yai-panel--hidden' : '' ) . '" id="yai-avatar-gravatar-panel">';
     echo '<small>Enter your email address to use your <a href="https://gravatar.com" target="_blank" rel="noopener noreferrer">Gravatar</a> profile picture.</small>';
     echo '<input type="email" name="yai_avatar_email" id="yai_avatar_email" value="' . yourls_esc_attr( $avatar_email ) . '" placeholder="you@example.com">';
     echo '</div>';
 
-    echo '<div class="yai-avatar-panel" id="yai-avatar-upload-panel"' . ( $avatar_mode !== 'upload' ? ' style="display:none"' : '' ) . '>';
+    echo '<div class="yai-avatar-panel' . ( $avatar_mode !== 'upload' ? ' yai-panel--hidden' : '' ) . '" id="yai-avatar-upload-panel">';
     echo '<small>Upload a JPG, PNG, GIF, or WebP image (max 2 MB). Square images work best.</small>';
     if ( $avatar_mode === 'upload' && $avatar_url ) {
         $current_img = htmlspecialchars( YAI_UPLOAD_URL . '/' . basename( $avatar_url ), ENT_QUOTES );
@@ -191,7 +195,7 @@ function yai_config_page() {
     echo '<input type="file" name="yai_avatar_upload" id="yai_avatar_upload" accept="image/jpeg,image/png,image/gif,image/webp">';
     echo '</div>';
 
-    echo '<div class="yai-avatar-panel" id="yai-avatar-none-panel"' . ( $avatar_mode !== 'none' ? ' style="display:none"' : '' ) . '>';
+    echo '<div class="yai-avatar-panel' . ( $avatar_mode !== 'none' ? ' yai-panel--hidden' : '' ) . '" id="yai-avatar-none-panel">';
     echo '<small>No avatar will be shown on the profile page.</small>';
     echo '</div>';
 
@@ -237,16 +241,18 @@ function yai_config_page() {
     }
     echo '</div>';
 
-    echo '<div class="yai-bgimg-panel" id="yai-bgimg-none-panel"' . ( $bg_image_mode !== 'none' ? ' style="display:none"' : '' ) . '>';
+    echo '<div class="yai-bgimg-panel' . ( $bg_image_mode !== 'none' ? ' yai-panel--hidden' : '' ) . '" id="yai-bgimg-none-panel">';
     echo '<small>No background image — the background color above will be used.</small>';
     echo '</div>';
 
-    echo '<div class="yai-bgimg-panel" id="yai-bgimg-url-panel"' . ( $bg_image_mode !== 'url' ? ' style="display:none"' : '' ) . '>';
+    echo '<div class="yai-bgimg-panel' . ( $bg_image_mode !== 'url' ? ' yai-panel--hidden' : '' ) . '" id="yai-bgimg-url-panel">';
     echo '<small>Direct link to the background image. Wide landscape photos work best (e.g. Unsplash).</small>';
     echo '<input type="text" name="yai_bg_image_url" id="yai_bg_image_url" value="' . yourls_esc_attr( $bg_image_mode === 'url' ? $bg_image_url : '' ) . '" placeholder="https://example.com/background.jpg">';
+    echo '<img id="yai-bgimg-url-preview" class="yai-img-preview' . ( ($bg_image_mode === 'url' && $bg_image_url) ? '' : ' yai-panel--hidden' ) . '" src="' . ( ($bg_image_mode === 'url' && $bg_image_url) ? yourls_esc_attr( $bg_image_url ) : '' ) . '" alt="Background preview">';
+    echo '<div id="yai-bgimg-url-size-warning" class="yai-size-warning yai-panel--hidden"></div>';
     echo '</div>';
 
-    echo '<div class="yai-bgimg-panel" id="yai-bgimg-upload-panel"' . ( $bg_image_mode !== 'upload' ? ' style="display:none"' : '' ) . '>';
+    echo '<div class="yai-bgimg-panel' . ( $bg_image_mode !== 'upload' ? ' yai-panel--hidden' : '' ) . '" id="yai-bgimg-upload-panel">';
     echo '<small>Upload a JPG, PNG, GIF, or WebP image (max 5 MB). Wide landscape photos work best.</small>';
     if ( $bg_image_mode === 'upload' && $bg_image_url ) {
         $current_bg = htmlspecialchars( YAI_UPLOAD_URL . '/' . basename( $bg_image_url ), ENT_QUOTES );
@@ -303,7 +309,7 @@ function yai_config_page() {
     echo '<div class="yai-row">';
     echo '<label for="yai_custom_css">Custom CSS</label>';
     echo '<small>Added inside a &lt;style&gt; tag on the public page. Target <code>.yai-card</code>, <code>.yai-link</code>, etc.</small>';
-    echo '<textarea name="yai_custom_css" id="yai_custom_css" rows="6" style="width:100%;font-family:monospace;font-size:.8rem">' . htmlspecialchars( $custom_css ) . '</textarea>';
+    echo '<textarea name="yai_custom_css" id="yai_custom_css" rows="6" class="yai-custom-css-field">' . htmlspecialchars( $custom_css ) . '</textarea>';
     echo '</div>';
 
     echo '<div class="yai-check-row">';
@@ -336,9 +342,8 @@ function yai_config_page() {
 
     echo '</form>';
 
-    $nonce_ht = yourls_create_nonce( 'yai_config' );
-    echo '<form id="yai-ht-remove" method="post" style="display:none">';
-    echo '<input type="hidden" name="nonce" value="' . $nonce_ht . '">';
+    echo '<form id="yai-ht-remove" method="post" class="yai-panel--hidden">';
+    echo '<input type="hidden" name="nonce" value="' . $nonce_config . '">';
     echo '<input type="hidden" name="yai_htaccess_remove" value="1">';
     echo '</form>';
 }

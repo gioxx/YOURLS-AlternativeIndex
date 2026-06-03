@@ -333,11 +333,18 @@ function yai_config_page() {
     echo '</div>';
 
     echo '<div class="yai-footer">';
-    echo '<a href="' . YAI_GITHUB_REPO_URL . '" target="_blank" rel="noopener noreferrer">';
-    echo '<img src="https://github.githubassets.com/favicons/favicon.png" class="github-icon" alt="GitHub"> YOURLS Alternative Index</a><br>';
-    echo '&#10084;&#65039; Lovingly developed by the usually-on-vacation brain cell of ';
+    echo '<div class="plugin-footer-top">';
+    echo '<span>';
+    echo '<a href="https://yourls.gioxx.org/plugins/alternative-index" target="_blank" rel="noopener noreferrer">&#127760; YOURLS Alternative Index</a>';
+    echo ' &nbsp;&middot;&nbsp; ';
+    echo '<a href="' . YAI_GITHUB_REPO_URL . '" target="_blank" rel="noopener noreferrer"><img src="https://github.githubassets.com/favicons/favicon.png" class="github-icon" alt="GitHub">GitHub</a>';
+    echo '</span>';
+    echo '<a href="#" onclick="window.scrollTo({top:0,behavior:\'smooth\'});return false;">&#8593; Back to top</a>';
+    echo '</div>';
+    echo '<div>&#10084;&#65039; Lovingly developed by the usually-on-vacation brain cell of ';
     echo '<a href="https://github.com/gioxx" target="_blank" rel="noopener noreferrer">Gioxx</a> &ndash; ';
     echo '<a href="https://gioxx.org" target="_blank" rel="noopener noreferrer">Gioxx\'s Wall</a>';
+    echo '</div>';
     echo '</div>';
 
     echo '</form>';

@@ -1,6 +1,11 @@
 <?php
 
-yourls_add_action( 'plugins_loaded', 'yai_load_textdomain' );
+yourls_add_action( 'plugins_loaded', 'yai_boot' );
+function yai_boot() {
+    yai_load_textdomain();
+    yourls_register_plugin_page( 'alternative_index', yourls__( 'Alternative Index', 'yourls-alternative-index' ), 'yai_config_page' );
+}
+
 function yai_load_textdomain() {
     $locale = yourls_get_locale();
     $domain = 'yourls-alternative-index';
@@ -10,11 +15,6 @@ function yai_load_textdomain() {
     } elseif ( file_exists( $path . "{$domain}-{$locale}.po" ) ) {
         yourls_load_textdomain( $domain, $path . "{$domain}-{$locale}.po" );
     }
-}
-
-yourls_add_action( 'plugins_loaded', 'yai_add_page' );
-function yai_add_page() {
-    yourls_register_plugin_page( 'alternative_index', 'Alternative Index', 'yai_config_page' );
 }
 
 function yai_enqueue_admin_assets( $social_links, $featured_links ) {
@@ -96,7 +96,7 @@ function yai_config_page() {
     echo '<div class="yai-header">';
     $page_heading = htmlspecialchars( yourls_apply_filters( 'plugin_page_title_alternative_index', 'YOURLS Alternative Index' ), ENT_QUOTES, 'UTF-8' );
     $update_badge = yai_has_update() ? ' <span class="yai-update-badge">Update Available</span>' : '';
-    echo '<h2 class="yai-title">&#127968; <span class="yai-title-text">' . $page_heading . $update_badge . '</span></h2>';
+    echo '<h2 class="yai-title">&#127968; <span class="yai-title-text">' . $page_heading . '</span>' . $update_badge . '</h2>';
     echo '<p class="yai-version">Version: ' . YAI_VERSION . '</p>';
     echo '</div>';
 
@@ -339,7 +339,7 @@ function yai_config_page() {
     echo ' &nbsp;&middot;&nbsp; ';
     echo '<a href="' . YAI_GITHUB_REPO_URL . '" target="_blank" rel="noopener noreferrer"><img src="https://github.githubassets.com/favicons/favicon.png" class="github-icon" alt="GitHub">GitHub</a>';
     echo '</span>';
-    echo '<a href="#" onclick="window.scrollTo({top:0,behavior:\'smooth\'});return false;">&#8593; Back to top</a>';
+    echo '<a href="#" onclick="window.scrollTo({top:0,behavior:\'smooth\'});return false;">&#8593; ' . yourls__( 'Back to top', 'yourls-alternative-index' ) . '</a>';
     echo '</div>';
     echo '<div>&#10084;&#65039; Lovingly developed by the usually-on-vacation brain cell of ';
     echo '<a href="https://github.com/gioxx" target="_blank" rel="noopener noreferrer">Gioxx</a> &ndash; ';
@@ -482,6 +482,7 @@ function yai_reset_settings() {
         'yai_page_title', 'yai_bg_color', 'yai_accent_color', 'yai_text_color',
         'yai_bg_image_mode', 'yai_bg_image_url', 'yai_card_transparency',
         'yai_social_links', 'yai_featured_links', 'yai_custom_css', 'yai_show_powered_by',
+        'yai_update_cache',
     ] as $key ) {
         yourls_delete_option( $key );
     }

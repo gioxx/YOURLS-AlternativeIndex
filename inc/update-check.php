@@ -1,12 +1,28 @@
 <?php
 
 function yai_fetch_latest_release() {
-    static $release = null;
-    if ( $release === null ) {
-        $response = yai_remote_get( YAI_GITHUB_API_URL );
-        $release  = ( $response && isset( $response['tag_name'] ) ) ? $response : false;
+    static $cached_release = null;
+    if ( $cached_release !== null ) return $cached_release ?: null;
+
+    $cache = yourls_get_option( 'yai_update_cache' );
+    if ( $cache && is_array( $cache ) && isset( $cache['checked_at'], $cache['latest_version'] ) ) {
+        if ( ( time() - (int) $cache['checked_at'] ) < 6 * 3600 ) {
+            $cached_release = [ 'tag_name' => $cache['latest_version'] ];
+            return $cached_release;
+        }
     }
-    return $release ?: null;
+
+    $response = yai_remote_get( YAI_GITHUB_API_URL );
+    if ( $response && isset( $response['tag_name'] ) ) {
+        yourls_update_option( 'yai_update_cache', [
+            'checked_at'     => time(),
+            'latest_version' => $response['tag_name'],
+        ] );
+        $cached_release = $response;
+    } else {
+        $cached_release = false;
+    }
+    return $cached_release ?: null;
 }
 
 function yai_show_update_notice() {

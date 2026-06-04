@@ -1,6 +1,11 @@
 <?php
 
-yourls_add_action( 'plugins_loaded', 'yai_load_textdomain' );
+yourls_add_action( 'plugins_loaded', 'yai_boot' );
+function yai_boot() {
+    yai_load_textdomain();
+    yourls_register_plugin_page( 'alternative_index', yourls__( 'Alternative Index', 'yourls-alternative-index' ), 'yai_config_page' );
+}
+
 function yai_load_textdomain() {
     $locale = yourls_get_locale();
     $domain = 'yourls-alternative-index';
@@ -10,11 +15,6 @@ function yai_load_textdomain() {
     } elseif ( file_exists( $path . "{$domain}-{$locale}.po" ) ) {
         yourls_load_textdomain( $domain, $path . "{$domain}-{$locale}.po" );
     }
-}
-
-yourls_add_action( 'plugins_loaded', 'yai_add_page' );
-function yai_add_page() {
-    yourls_register_plugin_page( 'alternative_index', yourls__( 'Alternative Index', 'yourls-alternative-index' ), 'yai_config_page' );
 }
 
 function yai_enqueue_admin_assets( $social_links, $featured_links ) {

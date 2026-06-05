@@ -6,7 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: YOURLS Alternative Index 1.0.4\n"
 "Report-Msgid-Bugs-To: https://github.com/gioxx/YOURLS-AlternativeIndex/issues\n"
-"PO-Revision-Date: 2026-06-04 00:00+0000\n"
+"PO-Revision-Date: 2026-06-05 00:00+0000\n"
+"Last-Translator: Gioxx <giovanni@solone.it>\n"
+"Language-Team: Italian\n"
 "Language: it_IT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,6 +19,278 @@ msgstr ""
 msgid "Alternative Index"
 msgstr "Alternative Index"
 
+#: inc/update-check.php
+msgid "New version available: %s!"
+msgstr "Nuova versione disponibile: %s!"
+
+#: inc/update-check.php
+msgid "View details on GitHub"
+msgstr "Visualizza i dettagli su GitHub"
+
+#: inc/admin-page.php
+msgid "Settings reset to default."
+msgstr "Impostazioni ripristinate ai valori predefiniti."
+
+#: inc/admin-page.php
+msgid "Legacy .htaccess rule removed."
+msgstr "Regola .htaccess precedente rimossa."
+
+#: inc/admin-page.php
+msgid "Update Available"
+msgstr "Aggiornamento disponibile"
+
+#: inc/admin-page.php
+msgid "Version: %s"
+msgstr "Versione: %s"
+
+#: inc/admin-page.php
+msgid "Plugin Status"
+msgstr "Stato del plugin"
+
+#: inc/admin-page.php
+msgid "Enable Alternative Index page"
+msgstr "Abilita la pagina Alternative Index"
+
+#: inc/admin-page.php
+msgid "When enabled, visitors to the YOURLS root URL will see the profile page below instead of a 403 error."
+msgstr "Se abilitato, i visitatori dell'URL radice di YOURLS vedranno la pagina del profilo invece di un errore 403."
+
+#: inc/admin-page.php
+msgid "index.php managed"
+msgstr "index.php gestito"
+
+#: inc/admin-page.php
+msgid "the root URL loads through YOURLS correctly. Save with the toggle OFF to restore the original."
+msgstr "l'URL radice si carica correttamente tramite YOURLS. Salva con il toggle disabilitato per ripristinare l'originale."
+
+#: inc/admin-page.php
+msgid "index.php not yet patched"
+msgstr "index.php non ancora aggiornato"
+
+#: inc/admin-page.php
+msgid "save settings once to apply the fix automatically."
+msgstr "salva le impostazioni una volta per applicare la correzione automaticamente."
+
+#: inc/admin-page.php
+msgid "%s is not writable by PHP. Create or replace it manually with:"
+msgstr "%s non è scrivibile da PHP. Crealo o sostituiscilo manualmente con:"
+
+#: inc/admin-page.php
+msgid "The %s rewrite rule from an earlier version is still present. It is now redundant"
+msgstr "La regola di rewrite %s di una versione precedente è ancora presente. È ora ridondante"
+
+#: inc/admin-page.php
+msgid "Remove it"
+msgstr "Rimuovila"
+
+#: inc/admin-page.php
+msgid "Profile"
+msgstr "Profilo"
+
+#: inc/admin-page.php
+msgid "Display Name"
+msgstr "Nome visualizzato"
+
+#: inc/admin-page.php
+msgid "Tagline / Bio"
+msgstr "Tagline / Bio"
+
+#: inc/admin-page.php
+msgid "Short description shown below your name."
+msgstr "Breve descrizione visualizzata sotto il tuo nome."
+
+#: inc/admin-page.php
+msgid "Avatar"
+msgstr "Avatar"
+
+#: inc/admin-page.php
+msgid "External URL"
+msgstr "URL esterno"
+
+#: inc/admin-page.php
+msgid "Upload image"
+msgstr "Carica immagine"
+
+#: inc/admin-page.php
+msgid "No avatar"
+msgstr "Nessun avatar"
+
+#: inc/admin-page.php
+msgid "Direct link to your profile picture (square images work best)."
+msgstr "Link diretto alla tua foto profilo (le immagini quadrate funzionano meglio)."
+
+#: inc/admin-page.php
+msgid "Enter your email address to use your %s profile picture."
+msgstr "Inserisci il tuo indirizzo email per usare la foto profilo %s."
+
+#: inc/admin-page.php
+msgid "Upload a JPG, PNG, GIF, or WebP image (max 2 MB). Square images work best."
+msgstr "Carica un'immagine JPG, PNG, GIF o WebP (max 2 MB). Le immagini quadrate funzionano meglio."
+
+#: inc/admin-page.php
+msgid "No avatar will be shown on the profile page."
+msgstr "Nessun avatar verrà mostrato sulla pagina del profilo."
+
+#: inc/admin-page.php
+msgid "Appearance"
+msgstr "Aspetto"
+
+#: inc/admin-page.php
+msgid "Browser Tab Title"
+msgstr "Titolo della scheda del browser"
+
+#: inc/admin-page.php
+msgid "Defaults to your display name if left empty."
+msgstr "Se lasciato vuoto, viene usato il nome visualizzato."
+
+#: inc/admin-page.php
+msgid "Background Color"
+msgstr "Colore di sfondo"
+
+#: inc/admin-page.php
+msgid "Page background."
+msgstr "Sfondo della pagina."
+
+#: inc/admin-page.php
+msgid "Accent Color"
+msgstr "Colore accento"
+
+#: inc/admin-page.php
+msgid "Buttons &amp; icon hover."
+msgstr "Pulsanti e hover delle icone."
+
+#: inc/admin-page.php
+msgid "Text Color"
+msgstr "Colore del testo"
+
+#: inc/admin-page.php
+msgid "All text on the page."
+msgstr "Tutto il testo della pagina."
+
+#: inc/admin-page.php
+msgid "Background Image"
+msgstr "Immagine di sfondo"
+
+#: inc/admin-page.php
+msgid "When set, a frosted-glass effect is applied to the profile card for a polished look."
+msgstr "Se impostata, alla scheda del profilo viene applicato un effetto vetro smerigliato per un aspetto raffinato."
+
+#: inc/admin-page.php
+msgid "None"
+msgstr "Nessuna"
+
+#: inc/admin-page.php
+msgid "No background image — the background color above will be used."
+msgstr "Nessuna immagine di sfondo — verrà usato il colore di sfondo impostato sopra."
+
+#: inc/admin-page.php
+msgid "Direct link to the background image. Wide landscape photos work best (e.g. Unsplash)."
+msgstr "Link diretto all'immagine di sfondo. Le foto orizzontali funzionano meglio (es. Unsplash)."
+
+#: inc/admin-page.php
+msgid "Upload a JPG, PNG, GIF, or WebP image (max 5 MB). Wide landscape photos work best."
+msgstr "Carica un'immagine JPG, PNG, GIF o WebP (max 5 MB). Le foto orizzontali funzionano meglio."
+
+#: inc/admin-page.php
+msgid "Info Box Transparency (%)"
+msgstr "Trasparenza del riquadro (%)"
+
+#: inc/admin-page.php
+msgid "Used only when a background image is active. 0 keeps the current frosted look, 100 removes the glass effect and makes the box fully transparent."
+msgstr "Attiva solo quando un'immagine di sfondo è impostata. 0 mantiene l'effetto vetro smerigliato, 100 lo rimuove rendendo il riquadro completamente trasparente."
+
+#: inc/admin-page.php
+msgid "Social Links"
+msgstr "Link social"
+
+#: inc/admin-page.php
+msgid "Social icons shown in a row below your tagline."
+msgstr "Icone social visualizzate in fila sotto la tagline."
+
+#: inc/admin-page.php
+msgid "Platform"
+msgstr "Piattaforma"
+
+#: inc/admin-page.php
+msgid "+ Add Social Link"
+msgstr "+ Aggiungi link social"
+
+#: inc/admin-page.php
+msgid "Featured Links"
+msgstr "Link in evidenza"
+
+#: inc/admin-page.php
+msgid "Full-width link buttons shown below the social icons."
+msgstr "Pulsanti link a larghezza intera mostrati sotto le icone social."
+
+#: inc/admin-page.php
+msgid "Emoji"
+msgstr "Emoji"
+
+#: inc/admin-page.php
+msgid "Title"
+msgstr "Titolo"
+
+#: inc/admin-page.php
+msgid "+ Add Featured Link"
+msgstr "+ Aggiungi link in evidenza"
+
+#: inc/admin-page.php
+msgid "Advanced"
+msgstr "Avanzate"
+
+#: inc/admin-page.php
+msgid "Custom CSS"
+msgstr "CSS personalizzato"
+
+#: inc/admin-page.php
+msgid "Added inside a &lt;style&gt; tag on the public page. Target %s, %s, etc."
+msgstr "Aggiunto all'interno di un tag &lt;style&gt; nella pagina pubblica. Usa %s, %s, ecc. come selettori."
+
+#: inc/admin-page.php
+msgid "Show &ldquo;Powered by YOURLS Alternative Index&rdquo; footer link"
+msgstr "Mostra il link &ldquo;Powered by YOURLS Alternative Index&rdquo; nel footer"
+
+#: inc/admin-page.php
+msgid "Save Settings"
+msgstr "Salva impostazioni"
+
+#: inc/admin-page.php
+msgid "Reset all settings to default?"
+msgstr "Ripristinare tutte le impostazioni ai valori predefiniti?"
+
+#: inc/admin-page.php
+msgid "Reset to Default"
+msgstr "Ripristina predefiniti"
+
+#: inc/admin-page.php
+msgid "Preview Page"
+msgstr "Anteprima pagina"
+
 #: inc/admin-page.php
 msgid "Back to top"
 msgstr "Torna all'inizio"
+
+#: inc/admin-page.php
+msgid "Settings saved successfully!"
+msgstr "Impostazioni salvate con successo!"
+
+#: inc/admin-page.php
+msgid "Avatar URL is not a valid URL."
+msgstr "L'URL dell'avatar non è un URL valido."
+
+#: inc/admin-page.php
+msgid "Gravatar email is not a valid email address."
+msgstr "L'email Gravatar non è un indirizzo email valido."
+
+#: inc/admin-page.php
+msgid "Avatar upload failed: %s"
+msgstr "Caricamento avatar non riuscito: %s"
+
+#: inc/admin-page.php
+msgid "Background image URL is not a valid URL."
+msgstr "L'URL dell'immagine di sfondo non è un URL valido."
+
+#: inc/admin-page.php
+msgid "Background image upload failed: %s"
+msgstr "Caricamento immagine di sfondo non riuscito: %s"

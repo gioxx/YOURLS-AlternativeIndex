@@ -53,13 +53,13 @@ function yai_config_page() {
     if ( isset( $_POST['yai_reset'] ) ) {
         yourls_verify_nonce( 'yai_reset', $_POST['nonce_reset'] );
         yai_reset_settings();
-        $messages[] = [ 'type' => 'warning', 'text' => 'Settings reset to default.' ];
+        $messages[] = [ 'type' => 'warning', 'text' => yourls__( 'Settings reset to default.', 'yourls-alternative-index' ) ];
     }
 
     if ( isset( $_POST['yai_htaccess_remove'] ) ) {
         yourls_verify_nonce( 'yai_config' );
         yai_htaccess_remove_rule();
-        $messages[] = [ 'type' => 'success', 'text' => 'Legacy .htaccess rule removed.' ];
+        $messages[] = [ 'type' => 'success', 'text' => yourls__( 'Legacy .htaccess rule removed.', 'yourls-alternative-index' ) ];
     }
 
     $enabled        = (bool) yourls_get_option( 'yai_enabled' );
@@ -95,9 +95,9 @@ function yai_config_page() {
 
     echo '<div class="yai-header">';
     $page_heading = htmlspecialchars( yourls_apply_filters( 'plugin_page_title_alternative_index', 'YOURLS Alternative Index' ), ENT_QUOTES, 'UTF-8' );
-    $update_badge = yai_has_update() ? ' <span class="yai-update-badge">Update Available</span>' : '';
+    $update_badge = yai_has_update() ? ' <span class="yai-update-badge">' . yourls__( 'Update Available', 'yourls-alternative-index' ) . '</span>' : '';
     echo '<h2 class="yai-title">&#127968; <span class="yai-title-text">' . $page_heading . $update_badge . '</span></h2>';
-    echo '<p class="yai-version">Version: ' . YAI_VERSION . '</p>';
+    echo '<p class="yai-version">' . sprintf( yourls__( 'Version: %s', 'yourls-alternative-index' ), YAI_VERSION ) . '</p>';
     echo '</div>';
 
     foreach ( $messages as $msg ) {
@@ -109,15 +109,15 @@ function yai_config_page() {
 
     // ── Enable/disable ──
     echo '<div class="yai-panel">';
-    echo '<h3 class="yai-heading">&#9889; Plugin Status</h3>';
+    echo '<h3 class="yai-heading">&#9889; ' . yourls__( 'Plugin Status', 'yourls-alternative-index' ) . '</h3>';
     echo '<div class="yai-panel-body">';
     echo '<div class="yai-check-row">';
     echo '<label class="yai-toggle-label">';
     echo '<input type="checkbox" name="yai_enabled" value="1" class="yai-toggle-cb"' . ( $enabled ? ' checked' : '' ) . '>';
     echo '<span class="yai-toggle"></span>';
-    echo '<span>Enable Alternative Index page</span>';
+    echo '<span>' . yourls__( 'Enable Alternative Index page', 'yourls-alternative-index' ) . '</span>';
     echo '</label>';
-    echo '<small>When enabled, visitors to the YOURLS root URL will see the profile page below instead of a 403 error.</small>';
+    echo '<small>' . yourls__( 'When enabled, visitors to the YOURLS root URL will see the profile page below instead of a 403 error.', 'yourls-alternative-index' ) . '</small>';
     echo '</div>';
 
     $index_ok  = yai_index_is_custom();
@@ -126,15 +126,16 @@ function yai_config_page() {
 
     if ( $index_ok ) {
         echo '<div class="yai-htaccess-ok">';
-        echo '&#10003; <strong>index.php managed</strong> — the root URL loads through YOURLS correctly. Save with the toggle OFF to restore the original.';
+        echo '&#10003; <strong>' . yourls__( 'index.php managed', 'yourls-alternative-index' ) . '</strong> &mdash; ';
+        echo yourls__( 'the root URL loads through YOURLS correctly. Save with the toggle OFF to restore the original.', 'yourls-alternative-index' );
         echo '</div>';
     } elseif ( $enabled ) {
         echo '<div class="yai-htaccess-warn">';
-        echo '<strong>&#9888; index.php not yet patched</strong> — ';
+        echo '<strong>&#9888; ' . yourls__( 'index.php not yet patched', 'yourls-alternative-index' ) . '</strong> &mdash; ';
         if ( $idx_write ) {
-            echo 'save settings once to apply the fix automatically.';
+            echo yourls__( 'save settings once to apply the fix automatically.', 'yourls-alternative-index' );
         } else {
-            echo '<code>index.php</code> is not writable by PHP. Create or replace it manually with:';
+            echo sprintf( yourls__( '%s is not writable by PHP. Create or replace it manually with:', 'yourls-alternative-index' ), '<code>index.php</code>' );
             echo '<pre class="yai-code">&lt;?php' . "\n" . 'require_once __DIR__ . \'/yourls-loader.php\';</pre>';
         }
         echo '</div>';
@@ -142,8 +143,8 @@ function yai_config_page() {
 
     if ( yai_htaccess_has_rule() ) {
         echo '<div class="yai-htaccess-warn yai-htaccess-warn-mt">';
-        echo '&#9432; The <code>.htaccess</code> rewrite rule from an earlier version is still present. It is now redundant — ';
-        echo '<button type="submit" form="yai-ht-remove" class="button yai-btn-sm">Remove it</button>';
+        echo '&#9432; ' . sprintf( yourls__( 'The %s rewrite rule from an earlier version is still present. It is now redundant', 'yourls-alternative-index' ), '<code>.htaccess</code>' );
+        echo ' &mdash; <button type="submit" form="yai-ht-remove" class="button yai-btn-sm">' . yourls__( 'Remove it', 'yourls-alternative-index' ) . '</button>';
         echo '</div>';
     }
 
@@ -151,43 +152,49 @@ function yai_config_page() {
 
     // ── Profile ──
     echo '<div class="yai-panel">';
-    echo '<h3 class="yai-heading">&#128100; Profile</h3>';
+    echo '<h3 class="yai-heading">&#128100; ' . yourls__( 'Profile', 'yourls-alternative-index' ) . '</h3>';
     echo '<div class="yai-panel-body">';
 
     echo '<div class="yai-row">';
-    echo '<label for="yai_profile_name">Display Name</label>';
+    echo '<label for="yai_profile_name">' . yourls__( 'Display Name', 'yourls-alternative-index' ) . '</label>';
     echo '<input type="text" name="yai_profile_name" id="yai_profile_name" value="' . yourls_esc_attr( $name ) . '" placeholder="Jane Doe">';
     echo '</div>';
 
     echo '<div class="yai-row">';
-    echo '<label for="yai_tagline">Tagline / Bio</label>';
-    echo '<small>Short description shown below your name.</small>';
+    echo '<label for="yai_tagline">' . yourls__( 'Tagline / Bio', 'yourls-alternative-index' ) . '</label>';
+    echo '<small>' . yourls__( 'Short description shown below your name.', 'yourls-alternative-index' ) . '</small>';
     echo '<input type="text" name="yai_tagline" id="yai_tagline" value="' . yourls_esc_attr( $tagline ) . '" placeholder="Photographer &bull; Traveler &bull; Coffee addict">';
     echo '</div>';
 
     echo '<div class="yai-row">';
-    echo '<label>Avatar</label>';
+    echo '<label>' . yourls__( 'Avatar', 'yourls-alternative-index' ) . '</label>';
     echo '<div class="yai-avatar-modes">';
-    foreach ( [ 'url' => 'External URL', 'gravatar' => 'Gravatar', 'upload' => 'Upload image', 'none' => 'No avatar' ] as $mode_key => $mode_label ) {
+    $avatar_mode_labels = [
+        'url'      => yourls__( 'External URL', 'yourls-alternative-index' ),
+        'gravatar' => 'Gravatar',
+        'upload'   => yourls__( 'Upload image', 'yourls-alternative-index' ),
+        'none'     => yourls__( 'No avatar', 'yourls-alternative-index' ),
+    ];
+    foreach ( $avatar_mode_labels as $mode_key => $mode_label ) {
         $checked = ( $avatar_mode === $mode_key ) ? ' checked' : '';
         echo '<label class="yai-avatar-mode-label"><input type="radio" name="yai_avatar_mode" value="' . $mode_key . '"' . $checked . '> ' . $mode_label . '</label>';
     }
     echo '</div>';
 
     echo '<div class="yai-avatar-panel' . ( $avatar_mode !== 'url' ? ' yai-panel--hidden' : '' ) . '" id="yai-avatar-url-panel">';
-    echo '<small>Direct link to your profile picture (square images work best).</small>';
+    echo '<small>' . yourls__( 'Direct link to your profile picture (square images work best).', 'yourls-alternative-index' ) . '</small>';
     echo '<input type="text" name="yai_avatar_url" id="yai_avatar_url" value="' . yourls_esc_attr( $avatar_url ) . '" placeholder="https://example.com/photo.jpg">';
     echo '<img id="yai-avatar-url-preview" class="yai-img-preview' . ( ($avatar_mode === 'url' && $avatar_url) ? '' : ' yai-panel--hidden' ) . '" src="' . ( ($avatar_mode === 'url' && $avatar_url) ? yourls_esc_attr( $avatar_url ) : '' ) . '" alt="Avatar preview">';
     echo '<div id="yai-avatar-url-size-warning" class="yai-size-warning yai-panel--hidden"></div>';
     echo '</div>';
 
     echo '<div class="yai-avatar-panel' . ( $avatar_mode !== 'gravatar' ? ' yai-panel--hidden' : '' ) . '" id="yai-avatar-gravatar-panel">';
-    echo '<small>Enter your email address to use your <a href="https://gravatar.com" target="_blank" rel="noopener noreferrer">Gravatar</a> profile picture.</small>';
+    echo '<small>' . sprintf( yourls__( 'Enter your email address to use your %s profile picture.', 'yourls-alternative-index' ), '<a href="https://gravatar.com" target="_blank" rel="noopener noreferrer">Gravatar</a>' ) . '</small>';
     echo '<input type="email" name="yai_avatar_email" id="yai_avatar_email" value="' . yourls_esc_attr( $avatar_email ) . '" placeholder="you@example.com">';
     echo '</div>';
 
     echo '<div class="yai-avatar-panel' . ( $avatar_mode !== 'upload' ? ' yai-panel--hidden' : '' ) . '" id="yai-avatar-upload-panel">';
-    echo '<small>Upload a JPG, PNG, GIF, or WebP image (max 2 MB). Square images work best.</small>';
+    echo '<small>' . yourls__( 'Upload a JPG, PNG, GIF, or WebP image (max 2 MB). Square images work best.', 'yourls-alternative-index' ) . '</small>';
     if ( $avatar_mode === 'upload' && $avatar_url ) {
         $current_img = htmlspecialchars( YAI_UPLOAD_URL . '/' . basename( $avatar_url ), ENT_QUOTES );
         echo '<div class="yai-avatar-current"><img src="' . $current_img . '" alt="Current avatar" class="yai-avatar-thumb"> <span class="yai-avatar-filename">' . htmlspecialchars( basename( $avatar_url ), ENT_QUOTES ) . '</span></div>';
@@ -196,7 +203,7 @@ function yai_config_page() {
     echo '</div>';
 
     echo '<div class="yai-avatar-panel' . ( $avatar_mode !== 'none' ? ' yai-panel--hidden' : '' ) . '" id="yai-avatar-none-panel">';
-    echo '<small>No avatar will be shown on the profile page.</small>';
+    echo '<small>' . yourls__( 'No avatar will be shown on the profile page.', 'yourls-alternative-index' ) . '</small>';
     echo '</div>';
 
     echo '</div>';
@@ -204,20 +211,20 @@ function yai_config_page() {
 
     // ── Appearance ──
     echo '<div class="yai-panel">';
-    echo '<h3 class="yai-heading">&#127912; Appearance</h3>';
+    echo '<h3 class="yai-heading">&#127912; ' . yourls__( 'Appearance', 'yourls-alternative-index' ) . '</h3>';
     echo '<div class="yai-panel-body">';
 
     echo '<div class="yai-row">';
-    echo '<label for="yai_page_title">Browser Tab Title</label>';
-    echo '<small>Defaults to your display name if left empty.</small>';
+    echo '<label for="yai_page_title">' . yourls__( 'Browser Tab Title', 'yourls-alternative-index' ) . '</label>';
+    echo '<small>' . yourls__( 'Defaults to your display name if left empty.', 'yourls-alternative-index' ) . '</small>';
     echo '<input type="text" name="yai_page_title" id="yai_page_title" value="' . yourls_esc_attr( $page_title ) . '" placeholder="Jane Doe &mdash; Links">';
     echo '</div>';
 
     echo '<div class="yai-color-items">';
     $color_fields = [
-        'yai_bg_color'     => [ 'Background Color',  'Page background.',          $bg_color ],
-        'yai_accent_color' => [ 'Accent Color',       'Buttons &amp; icon hover.', $accent_color ],
-        'yai_text_color'   => [ 'Text Color',         'All text on the page.',     $text_color ],
+        'yai_bg_color'     => [ yourls__( 'Background Color', 'yourls-alternative-index' ),  yourls__( 'Page background.', 'yourls-alternative-index' ),           $bg_color ],
+        'yai_accent_color' => [ yourls__( 'Accent Color', 'yourls-alternative-index' ),       yourls__( 'Buttons &amp; icon hover.', 'yourls-alternative-index' ),  $accent_color ],
+        'yai_text_color'   => [ yourls__( 'Text Color', 'yourls-alternative-index' ),         yourls__( 'All text on the page.', 'yourls-alternative-index' ),      $text_color ],
     ];
     foreach ( $color_fields as $field_id => [ $label, $hint, $val ] ) {
         echo '<div class="yai-color-item">';
@@ -232,28 +239,33 @@ function yai_config_page() {
     echo '</div>';
 
     echo '<div class="yai-row yai-row-mt">';
-    echo '<label>Background Image</label>';
-    echo '<small>When set, a frosted-glass effect is applied to the profile card for a polished look.</small>';
+    echo '<label>' . yourls__( 'Background Image', 'yourls-alternative-index' ) . '</label>';
+    echo '<small>' . yourls__( 'When set, a frosted-glass effect is applied to the profile card for a polished look.', 'yourls-alternative-index' ) . '</small>';
     echo '<div class="yai-avatar-modes">';
-    foreach ( [ 'none' => 'None', 'url' => 'External URL', 'upload' => 'Upload image' ] as $mode_key => $mode_label ) {
+    $bg_mode_labels = [
+        'none'   => yourls__( 'None', 'yourls-alternative-index' ),
+        'url'    => yourls__( 'External URL', 'yourls-alternative-index' ),
+        'upload' => yourls__( 'Upload image', 'yourls-alternative-index' ),
+    ];
+    foreach ( $bg_mode_labels as $mode_key => $mode_label ) {
         $checked = ( $bg_image_mode === $mode_key ) ? ' checked' : '';
         echo '<label class="yai-avatar-mode-label"><input type="radio" name="yai_bg_image_mode" value="' . $mode_key . '"' . $checked . '> ' . $mode_label . '</label>';
     }
     echo '</div>';
 
     echo '<div class="yai-bgimg-panel' . ( $bg_image_mode !== 'none' ? ' yai-panel--hidden' : '' ) . '" id="yai-bgimg-none-panel">';
-    echo '<small>No background image — the background color above will be used.</small>';
+    echo '<small>' . yourls__( 'No background image — the background color above will be used.', 'yourls-alternative-index' ) . '</small>';
     echo '</div>';
 
     echo '<div class="yai-bgimg-panel' . ( $bg_image_mode !== 'url' ? ' yai-panel--hidden' : '' ) . '" id="yai-bgimg-url-panel">';
-    echo '<small>Direct link to the background image. Wide landscape photos work best (e.g. Unsplash).</small>';
+    echo '<small>' . yourls__( 'Direct link to the background image. Wide landscape photos work best (e.g. Unsplash).', 'yourls-alternative-index' ) . '</small>';
     echo '<input type="text" name="yai_bg_image_url" id="yai_bg_image_url" value="' . yourls_esc_attr( $bg_image_mode === 'url' ? $bg_image_url : '' ) . '" placeholder="https://example.com/background.jpg">';
     echo '<img id="yai-bgimg-url-preview" class="yai-img-preview' . ( ($bg_image_mode === 'url' && $bg_image_url) ? '' : ' yai-panel--hidden' ) . '" src="' . ( ($bg_image_mode === 'url' && $bg_image_url) ? yourls_esc_attr( $bg_image_url ) : '' ) . '" alt="Background preview">';
     echo '<div id="yai-bgimg-url-size-warning" class="yai-size-warning yai-panel--hidden"></div>';
     echo '</div>';
 
     echo '<div class="yai-bgimg-panel' . ( $bg_image_mode !== 'upload' ? ' yai-panel--hidden' : '' ) . '" id="yai-bgimg-upload-panel">';
-    echo '<small>Upload a JPG, PNG, GIF, or WebP image (max 5 MB). Wide landscape photos work best.</small>';
+    echo '<small>' . yourls__( 'Upload a JPG, PNG, GIF, or WebP image (max 5 MB). Wide landscape photos work best.', 'yourls-alternative-index' ) . '</small>';
     if ( $bg_image_mode === 'upload' && $bg_image_url ) {
         $current_bg = htmlspecialchars( YAI_UPLOAD_URL . '/' . basename( $bg_image_url ), ENT_QUOTES );
         echo '<div class="yai-bgimg-current"><img src="' . $current_bg . '" alt="Current background" class="yai-bgimg-thumb"> <span class="yai-avatar-filename">' . htmlspecialchars( basename( $bg_image_url ), ENT_QUOTES ) . '</span></div>';
@@ -262,8 +274,8 @@ function yai_config_page() {
     echo '</div>';
 
     echo '<div class="yai-row yai-row-mt">';
-    echo '<label for="yai_card_transparency">Info Box Transparency (%)</label>';
-    echo '<small>Used only when a background image is active. 0 keeps the current frosted look, 100 removes the glass effect and makes the box fully transparent.</small>';
+    echo '<label for="yai_card_transparency">' . yourls__( 'Info Box Transparency (%)', 'yourls-alternative-index' ) . '</label>';
+    echo '<small>' . yourls__( 'Used only when a background image is active. 0 keeps the current frosted look, 100 removes the glass effect and makes the box fully transparent.', 'yourls-alternative-index' ) . '</small>';
     echo '<input type="number" name="yai_card_transparency" id="yai_card_transparency" min="0" max="100" step="1" value="' . yourls_esc_attr( (string) $card_transparency ) . '">';
     echo '</div>';
 
@@ -272,43 +284,43 @@ function yai_config_page() {
 
     // ── Social Links ──
     echo '<div class="yai-panel">';
-    echo '<h3 class="yai-heading">&#128279; Social Links</h3>';
+    echo '<h3 class="yai-heading">&#128279; ' . yourls__( 'Social Links', 'yourls-alternative-index' ) . '</h3>';
     echo '<div class="yai-panel-body">';
-    echo '<small>Social icons shown in a row below your tagline.</small>';
+    echo '<small>' . yourls__( 'Social icons shown in a row below your tagline.', 'yourls-alternative-index' ) . '</small>';
     echo '<div class="yai-col-headers">';
-    echo '<span class="yai-ch-platform">Platform</span>';
+    echo '<span class="yai-ch-platform">' . yourls__( 'Platform', 'yourls-alternative-index' ) . '</span>';
     echo '<span class="yai-ch-url">URL</span>';
     echo '<span class="yai-ch-spacer"></span>';
     echo '</div>';
     echo '<div id="yai-social-list"></div>';
-    echo '<button type="button" class="button yai-add-btn" id="yai-add-social">+ Add Social Link</button>';
+    echo '<button type="button" class="button yai-add-btn" id="yai-add-social">' . yourls__( '+ Add Social Link', 'yourls-alternative-index' ) . '</button>';
     echo '<input type="hidden" name="yai_social_links" id="yai_social_links_input">';
     echo '</div></div>';
 
     // ── Featured Links ──
     echo '<div class="yai-panel">';
-    echo '<h3 class="yai-heading">&#127775; Featured Links</h3>';
+    echo '<h3 class="yai-heading">&#127775; ' . yourls__( 'Featured Links', 'yourls-alternative-index' ) . '</h3>';
     echo '<div class="yai-panel-body">';
-    echo '<small>Full-width link buttons shown below the social icons.</small>';
+    echo '<small>' . yourls__( 'Full-width link buttons shown below the social icons.', 'yourls-alternative-index' ) . '</small>';
     echo '<div class="yai-col-headers">';
-    echo '<span class="yai-ch-emoji">Emoji</span>';
-    echo '<span class="yai-ch-title">Title</span>';
+    echo '<span class="yai-ch-emoji">' . yourls__( 'Emoji', 'yourls-alternative-index' ) . '</span>';
+    echo '<span class="yai-ch-title">' . yourls__( 'Title', 'yourls-alternative-index' ) . '</span>';
     echo '<span class="yai-ch-featured-url">URL</span>';
     echo '<span class="yai-ch-spacer"></span>';
     echo '</div>';
     echo '<div id="yai-links-list"></div>';
-    echo '<button type="button" class="button yai-add-btn" id="yai-add-link">+ Add Featured Link</button>';
+    echo '<button type="button" class="button yai-add-btn" id="yai-add-link">' . yourls__( '+ Add Featured Link', 'yourls-alternative-index' ) . '</button>';
     echo '<input type="hidden" name="yai_featured_links" id="yai_featured_links_input">';
     echo '</div></div>';
 
     // ── Advanced ──
     echo '<div class="yai-panel">';
-    echo '<h3 class="yai-heading">&#128295; Advanced</h3>';
+    echo '<h3 class="yai-heading">&#128295; ' . yourls__( 'Advanced', 'yourls-alternative-index' ) . '</h3>';
     echo '<div class="yai-panel-body">';
 
     echo '<div class="yai-row">';
-    echo '<label for="yai_custom_css">Custom CSS</label>';
-    echo '<small>Added inside a &lt;style&gt; tag on the public page. Target <code>.yai-card</code>, <code>.yai-link</code>, etc.</small>';
+    echo '<label for="yai_custom_css">' . yourls__( 'Custom CSS', 'yourls-alternative-index' ) . '</label>';
+    echo '<small>' . sprintf( yourls__( 'Added inside a &lt;style&gt; tag on the public page. Target %s, %s, etc.', 'yourls-alternative-index' ), '<code>.yai-card</code>', '<code>.yai-link</code>' ) . '</small>';
     echo '<textarea name="yai_custom_css" id="yai_custom_css" rows="6" class="yai-custom-css-field">' . htmlspecialchars( $custom_css ) . '</textarea>';
     echo '</div>';
 
@@ -316,7 +328,7 @@ function yai_config_page() {
     echo '<label class="yai-toggle-label">';
     echo '<input type="checkbox" name="yai_show_powered_by" value="1" class="yai-toggle-cb"' . ( $show_powered ? ' checked' : '' ) . '>';
     echo '<span class="yai-toggle"></span>';
-    echo '<span>Show &ldquo;Powered by YOURLS Alternative Index&rdquo; footer link</span>';
+    echo '<span>' . yourls__( 'Show &ldquo;Powered by YOURLS Alternative Index&rdquo; footer link', 'yourls-alternative-index' ) . '</span>';
     echo '</label>';
     echo '</div>';
 
@@ -324,11 +336,12 @@ function yai_config_page() {
 
     // ── Actions ──
     echo '<div class="yai-actions">';
-    echo '<button type="submit" name="yai_save" class="button">&#128190; Save Settings</button>';
-    echo '<button type="submit" name="yai_reset" class="button" onclick="return confirm(\'Reset all settings to default?\');" formnovalidate>&#128260; Reset to Default</button>';
+    echo '<button type="submit" name="yai_save" class="button">&#128190; ' . yourls__( 'Save Settings', 'yourls-alternative-index' ) . '</button>';
+    $confirm_msg = yourls__( 'Reset all settings to default?', 'yourls-alternative-index' );
+    echo '<button type="submit" name="yai_reset" class="button" onclick="return confirm(\'' . htmlspecialchars( $confirm_msg, ENT_QUOTES ) . '\');" formnovalidate>&#128260; ' . yourls__( 'Reset to Default', 'yourls-alternative-index' ) . '</button>';
     echo '<input type="hidden" name="nonce_reset" value="' . $nonce_reset . '">';
     if ( $enabled ) {
-        echo '<a href="' . rtrim( YOURLS_SITE, '/' ) . '/" target="_blank" rel="noopener noreferrer" class="button">&#128279; Preview Page</a>';
+        echo '<a href="' . rtrim( YOURLS_SITE, '/' ) . '/" target="_blank" rel="noopener noreferrer" class="button">&#128279; ' . yourls__( 'Preview Page', 'yourls-alternative-index' ) . '</a>';
     }
     echo '</div>';
 
@@ -377,21 +390,21 @@ function yai_save_settings() {
     if ( $avatar_mode === 'url' ) {
         $avatar = trim( $_POST['yai_avatar_url'] ?? '' );
         if ( $avatar && !filter_var( $avatar, FILTER_VALIDATE_URL ) ) {
-            return [ 'success' => false, 'text' => 'Avatar URL is not a valid URL.' ];
+            return [ 'success' => false, 'text' => yourls__( 'Avatar URL is not a valid URL.', 'yourls-alternative-index' ) ];
         }
         yourls_update_option( 'yai_avatar_url', $avatar );
 
     } elseif ( $avatar_mode === 'gravatar' ) {
         $email = trim( $_POST['yai_avatar_email'] ?? '' );
         if ( $email && !filter_var( $email, FILTER_VALIDATE_EMAIL ) ) {
-            return [ 'success' => false, 'text' => 'Gravatar email is not a valid email address.' ];
+            return [ 'success' => false, 'text' => yourls__( 'Gravatar email is not a valid email address.', 'yourls-alternative-index' ) ];
         }
         yourls_update_option( 'yai_avatar_email', strtolower( $email ) );
 
     } elseif ( $avatar_mode === 'upload' ) {
         $uploaded = yai_handle_upload( 'yai_avatar_upload' );
         if ( is_string( $uploaded ) && strpos( $uploaded, 'ERR:' ) === 0 ) {
-            return [ 'success' => false, 'text' => 'Avatar upload failed: ' . substr( $uploaded, 4 ) ];
+            return [ 'success' => false, 'text' => sprintf( yourls__( 'Avatar upload failed: %s', 'yourls-alternative-index' ), substr( $uploaded, 4 ) ) ];
         }
         if ( $uploaded !== null ) {
             yourls_update_option( 'yai_avatar_url', $uploaded );
@@ -406,14 +419,14 @@ function yai_save_settings() {
     if ( $bg_image_mode === 'url' ) {
         $bg_img = trim( $_POST['yai_bg_image_url'] ?? '' );
         if ( $bg_img && !filter_var( $bg_img, FILTER_VALIDATE_URL ) ) {
-            return [ 'success' => false, 'text' => 'Background image URL is not a valid URL.' ];
+            return [ 'success' => false, 'text' => yourls__( 'Background image URL is not a valid URL.', 'yourls-alternative-index' ) ];
         }
         yourls_update_option( 'yai_bg_image_url', $bg_img );
 
     } elseif ( $bg_image_mode === 'upload' ) {
         $uploaded = yai_handle_upload( 'yai_bg_image_upload', 5 * 1024 * 1024 );
         if ( is_string( $uploaded ) && strpos( $uploaded, 'ERR:' ) === 0 ) {
-            return [ 'success' => false, 'text' => 'Background image upload failed: ' . substr( $uploaded, 4 ) ];
+            return [ 'success' => false, 'text' => sprintf( yourls__( 'Background image upload failed: %s', 'yourls-alternative-index' ), substr( $uploaded, 4 ) ) ];
         }
         if ( $uploaded !== null ) {
             yourls_update_option( 'yai_bg_image_url', $uploaded );
@@ -470,7 +483,7 @@ function yai_save_settings() {
     yourls_update_option( 'yai_custom_css',      $_POST['yai_custom_css'] ?? '' );
     yourls_update_option( 'yai_show_powered_by', isset( $_POST['yai_show_powered_by'] ) ? 1 : 0 );
 
-    return [ 'success' => true, 'text' => 'Settings saved successfully!' ];
+    return [ 'success' => true, 'text' => yourls__( 'Settings saved successfully!', 'yourls-alternative-index' ) ];
 }
 
 function yai_reset_settings() {

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: YOURLS Alternative Index 1.0.4\n"
 "Report-Msgid-Bugs-To: https://github.com/gioxx/YOURLS-AlternativeIndex/issues\n"
-"POT-Creation-Date: 2026-06-04 00:00+0000\n"
+"POT-Creation-Date: 2026-06-05 00:00+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,6 +17,278 @@ msgstr ""
 msgid "Alternative Index"
 msgstr ""
 
+#: inc/update-check.php
+msgid "New version available: %s!"
+msgstr ""
+
+#: inc/update-check.php
+msgid "View details on GitHub"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Settings reset to default."
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Legacy .htaccess rule removed."
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Update Available"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Version: %s"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Plugin Status"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Enable Alternative Index page"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "When enabled, visitors to the YOURLS root URL will see the profile page below instead of a 403 error."
+msgstr ""
+
+#: inc/admin-page.php
+msgid "index.php managed"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "the root URL loads through YOURLS correctly. Save with the toggle OFF to restore the original."
+msgstr ""
+
+#: inc/admin-page.php
+msgid "index.php not yet patched"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "save settings once to apply the fix automatically."
+msgstr ""
+
+#: inc/admin-page.php
+msgid "%s is not writable by PHP. Create or replace it manually with:"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "The %s rewrite rule from an earlier version is still present. It is now redundant"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Remove it"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Profile"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Display Name"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Tagline / Bio"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Short description shown below your name."
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Avatar"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "External URL"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Upload image"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "No avatar"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Direct link to your profile picture (square images work best)."
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Enter your email address to use your %s profile picture."
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Upload a JPG, PNG, GIF, or WebP image (max 2 MB). Square images work best."
+msgstr ""
+
+#: inc/admin-page.php
+msgid "No avatar will be shown on the profile page."
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Appearance"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Browser Tab Title"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Defaults to your display name if left empty."
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Background Color"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Page background."
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Accent Color"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Buttons &amp; icon hover."
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Text Color"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "All text on the page."
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Background Image"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "When set, a frosted-glass effect is applied to the profile card for a polished look."
+msgstr ""
+
+#: inc/admin-page.php
+msgid "None"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "No background image — the background color above will be used."
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Direct link to the background image. Wide landscape photos work best (e.g. Unsplash)."
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Upload a JPG, PNG, GIF, or WebP image (max 5 MB). Wide landscape photos work best."
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Info Box Transparency (%)"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Used only when a background image is active. 0 keeps the current frosted look, 100 removes the glass effect and makes the box fully transparent."
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Social Links"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Social icons shown in a row below your tagline."
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Platform"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "+ Add Social Link"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Featured Links"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Full-width link buttons shown below the social icons."
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Emoji"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Title"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "+ Add Featured Link"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Advanced"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Custom CSS"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Added inside a &lt;style&gt; tag on the public page. Target %s, %s, etc."
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Show &ldquo;Powered by YOURLS Alternative Index&rdquo; footer link"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Save Settings"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Reset all settings to default?"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Reset to Default"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Preview Page"
+msgstr ""
+
 #: inc/admin-page.php
 msgid "Back to top"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Settings saved successfully!"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Avatar URL is not a valid URL."
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Gravatar email is not a valid email address."
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Avatar upload failed: %s"
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Background image URL is not a valid URL."
+msgstr ""
+
+#: inc/admin-page.php
+msgid "Background image upload failed: %s"
 msgstr ""

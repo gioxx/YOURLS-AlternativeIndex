@@ -17,7 +17,7 @@ msgstr ""
 
 #: inc/admin-page.php
 msgid "Alternative Index"
-msgstr "Alternative Index"
+msgstr "Pagina profilo alternativa"
 
 #: inc/update-check.php
 msgid "New version available: %s!"

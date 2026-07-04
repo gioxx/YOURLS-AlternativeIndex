@@ -5,6 +5,7 @@ Instead of showing a 403 error, visitors to your YOURLS root URL will see a beau
 
 [![Latest Release](https://img.shields.io/github/v/release/gioxx/YOURLS-AlternativeIndex)](https://github.com/gioxx/YOURLS-AlternativeIndex/releases)
 [![License](https://img.shields.io/github/license/gioxx/YOURLS-AlternativeIndex)](LICENSE)
+[![Listed in Awesome YOURLS!](https://img.shields.io/badge/Awesome-YOURLS-C5A3BE)](https://github.com/YOURLS/awesome)
 
 ---
 
@@ -132,7 +133,7 @@ This plugin is licensed under the [MIT License](LICENSE).
 
 ## 💬 About
 
-Lovingly developed by the usually-on-vacation brain cell of [Gioxx](https://github.com/gioxx), with assistance from Claude AI.
+Lovingly developed by the usually-on-vacation brain cell of [Gioxx](https://github.com/gioxx).
 
 ---
 
